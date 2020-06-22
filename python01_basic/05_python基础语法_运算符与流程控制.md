@@ -64,7 +64,7 @@ not in  in判断前一个对象是否没有包含于后一个对象  'h' not in 
 
 ###### 选择结构
 
-选择结构也称分支结构，表示程序需要根据某个特定的条件选择其中一个分支执行。选择结构有单重、双重及多重选择，用if关键字来实现分支结构
+选择结构也称分支结构，表示程序需要根据某个特定的条件选择其中一个分支执行。选择结构有单重、双重、多重选择以及选择的嵌套，用if，elif和else关键字来实现分支结构
 ```Python
 #单重分支
 if (a%2 == 0)：
@@ -84,5 +84,103 @@ elif (a%3 == 0):
 else：
     print('a既不是2，也不是3的倍数!'')
 
+#嵌套循环
+if(grade <60):
+    不及格
+else：
+    if(grade >= 90):
+        优秀
+    elif(grade >= 80):
+        良好
+    else:
+        及格
 ```
 
+###### 循环结构
+
+循环结构就是重复执行某段代码块，python中有for与while两种循环机制
+
+####### for循环语法如下
+
+```python
+#for 变量名 in 可迭代对象: # 可迭代对象可以是字符串、列表、元组、字典等序列对象，循环结束的条件就是对象被遍历完成。
+#1. for 变量名 in 已有的可迭代对象
+l= ["","lili","nini","jingjing"]
+for name in l:
+    #print(name)
+    if name == "jingjing":
+          print("我最爱的{0}出现了".format(name))
+    else:
+          print("同学，你好")
+
+#2. for 变量名 in range()   #通过range()函数来生成一个数值序列
+#函数原型：range( [start,]  stop [, step])
+#start: 计数从 start 开始。默认是从 0 开始。例如range（5）等价于range（0， 5）;
+#stop: 计数到 stop 结束，但不包括 stop。例如：range（0， 5） 是[0, 1, 2, 3, 4]没有5
+#step：步长，默认为1。例如：range（0， 5） 等价于 range(0, 5, 1)
+#range() 函数的返回对象表现为它是一个列表，但事实上它并不是，range()函数并不是在调用时一次生成整个序列，而是遍历一次才产生一个值，以减少内存的占用，其本质是一个迭代器。
+
+#循环嵌套
+#打印九九乘法表
+for i in range(1,10):
+    for j in range(1,i+1):
+        print('%d*%d=%d' %(i,j,i*j),end=' ')
+    print()
+
+#打印金字塔
+#     *        
+#   * * *       
+#  * * * * *      
+# * * * * * * *    
+#* * * * * * * * *   
+Num=5
+for i in range(Num):
+    for j in range(Num - i):
+        print(' ',end='') #在一行中打印空格
+    for k in range(2*i+1):
+        print('* ',end='') #在一行中打印'* '
+    print()
+#同理可打印直角三角形，等腰三角形，倒三角以及菱形
+```
+
+####### while循环语法如下
+```python
+#while 条件表达式：
+#   代码块
+#1. 对while循环，给定某一条件，只要满足条件，循环一直进行
+# 例 猜数字:计算机出一个1到100之间的随机数，玩家输入自己猜的数字，计算机会给出相应的提示信息（猜大了、猜小了或猜对了），如果玩家猜中了数字，游戏结束。
+import random
+
+num = random.randint(1, 100)
+while 1: #相当于ture
+    guess_num = int(input('请输入您猜的数字: '))
+    if guess_num < answer:
+        print('猜小了！')
+    elif guess_num > answer:
+        print('猜大了！')
+    else:
+        print('猜对了!')
+        break
+print('这个数字是:{}'.format(num))
+
+#2 break和continue的作用
+# break结束本层循环，而continue则用于结束本次循环，进行下一次循环
+num = 10
+while num > 0:
+    num -= 1
+    if num == 5:
+        continue # 结束掉本次循环，所以5不会打印，而是直接进入下一次循环
+    print(num)
+
+#练习：求两个正整数的最大公约数、最小公倍数
+a = int(input('请输入a的值'))
+b = int(input('请输入b的值'))
+sum = a*b
+while(a%b):                        #辗转相除法
+    c = a % b
+    a = b
+    b = c
+print('最大公约数是%d' %a)               
+print('最小公倍数是%d' % (sum // a) #最小公倍数=两数乘积/最大公约数
+
+```
