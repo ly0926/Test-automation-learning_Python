@@ -44,6 +44,16 @@ while a <= num:
     a,b=b,a+b
 
 
+#求阶乘
+num = int(input('请输入一个正整数：'))
+result = 1
+
+for i in range(1, num + 1):
+        result *= i
+print(result)
+
+
+
 
 #打印1~100之间的素数
 
