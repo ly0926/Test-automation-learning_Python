@@ -83,7 +83,7 @@ p_1.do_funtion_testing()
 ```
 
 #####  面向对象的各种方法（绑定方法与非绑定方法）  
-```
+```python
 class SeniorTestingEngineer:  # 高级测试工程师类
      # 属性
      work_year = 3
@@ -117,57 +117,57 @@ class SeniorTestingEngineer:  # 高级测试工程师类
 #           类方法中可直接通过cls.属性 调用类的属性
 # 4. 三种方法中都可以有：位置参数、默认参数、动态参数、关键字参数
 
-# p_1 = SeniorTestingEngineer()  # 创建对象
-# print(p_1.work_year)
-# print(p_1.salary)
-# p_1.coding()
-# p_1.do_sql()
-# p_1.do_linux()
+p_1 = SeniorTestingEngineer()  # 创建对象
+print(p_1.work_year)
+print(p_1.salary)
+p_1.coding()
+p_1.do_sql()
+p_1.do_linux()
 
-# P_2 = SeniorTestingEngineer  # 类名
-# print(P_2.work_year)  # 类名调用属性
-# print(P_2.salary)  # 类名调用属性
-# P_2.do_sql()    # 静态方法支持类名调用
-# P_2.do_linux()  # 类方法支持类名调用
-# # P_2.coding()  # 对象方法不支持类名调用
+P_2 = SeniorTestingEngineer  # 类名
+print(P_2.work_year)  # 类名调用属性
+print(P_2.salary)  # 类名调用属性
+P_2.do_sql()    # 静态方法支持类名调用
+P_2.do_linux()  # 类方法支持类名调用
+# P_2.coding()  # 对象方法不支持类名调用
 
 
 '''类中的方法相互调用'''
 
-# class SeniorTestingEngineer:  # 高级测试工程师类
-#     # 属性
-#     work_year = 3
-#     salary = 20000
-#
-#     # 行为
-#     def coding(self):  # 对象方法
-#         print('会写代码')
-#
-#         # self.do_linux()  # 类方法调用
-#         # self.do_sql()  # 静态方法调用
-#
-#     @staticmethod
-#     def do_sql():
-#         print('会操作数据库')
-#         # SeniorTestingEngineer().coding()  # 对象方法调用
-#         # SeniorTestingEngineer().do_linux()  # 类方法调用
-#
-#
-#     @classmethod  # 类方法，由cls参数标记
-#     def do_linux(cls):  # 类方法
-#         print('会使用linux系统')
-#
-#         cls().coding()  # 对象方法调用
-#         cls.do_sql()  # 静态方法调用
+class SeniorTestingEngineer:  # 高级测试工程师类
+    # 属性
+    work_year = 3
+    salary = 20000
+
+    # 行为
+    def coding(self):  # 对象方法
+        print('会写代码')
+
+        # self.do_linux()  # 类方法调用
+        # self.do_sql()  # 静态方法调用
+
+    @staticmethod
+    def do_sql():
+        print('会操作数据库')
+        # SeniorTestingEngineer().coding()  # 对象方法调用
+        # SeniorTestingEngineer().do_linux()  # 类方法调用
 
 
-# p = SeniorTestingEngineer()  # 创建实例
+    @classmethod  # 类方法，由cls参数标记
+    def do_linux(cls):  # 类方法
+        print('会使用linux系统')
+
+        cls().coding()  # 对象方法调用
+        cls.do_sql()  # 静态方法调用
+
+
+p = SeniorTestingEngineer()  # 创建实例
 
 # p.coding()  # 测试 类方法和静态方法 调用
 
 # p.do_sql()  # 测试 对象方法和类方法 调用
 
-# p.do_linux()  # 测试 对象方法和静态方法 调用
+p.do_linux()  # 测试 对象方法和静态方法 调用
 ```
 
 #####  类的初始化  
@@ -244,10 +244,10 @@ f = Info()
 print("f为：{}".format(f))
 
 # 有_call_方法
-f('华华', '女')
+f('Tom', 'male')
 
 # 无_call_方法
-# f('华华', '女')  # 不支持直接调用，故会报错：TypeError: 'Fib' object is not callable
+# f('Tom', 'male')  # 不支持直接调用，故会报错：TypeError: 'Info' object is not callable
 
 
 #  _init_方法 和_call_方法参数使用
